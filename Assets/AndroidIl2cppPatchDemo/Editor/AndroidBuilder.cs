@@ -118,7 +118,7 @@ public class AndroidBuilder : MonoBehaviour {
 
         //export project
         string error_msg = string.Empty;
-        string[] levels = new string[] { "Assets/AndroidIl2cppPatchDemo/Scene/0.unity" };
+        string[] levels = new string[] { "Assets/AndroidIl2cppPatchDemo/Scene/0.unity", "Assets/AndroidIl2cppPatchDemo/Scene/1.unity" };
         BuildOptions options = BuildOptions.AcceptExternalModificationsToPlayer;       
         if (Directory.Exists(ANDROID_EXPORT_PATH)) { FileUtil.DeleteFileOrDirectory(ANDROID_EXPORT_PATH);}
         Directory.CreateDirectory(ANDROID_EXPORT_PATH);
@@ -220,8 +220,7 @@ import io.github.noodle1983.Boostrap;");
 
             allZipCmds.AppendFormat("cd {0} && {1} -8 \"{2}\" \"{3}\"\n", BUILD_SCRIPTS_PATH, ZIP_PATH, PROJECT_DIR + "/AllAndroidPatchFiles/assets_bin_Data/" + zipFileName, filenameInZip);
         }
-
-        string zippedPatchFile = PROJECT_DIR + "/Assets/AndroidIl2cppPatchDemo/PrebuiltPatches/AllAndroidPatchFiles_Version1.zip";
+        string zippedPatchFile = PROJECT_DIR + "/Assets/AndroidIl2cppPatchDemo/PrebuiltPatches/AllAndroidPatchFiles_Version2.zip";
         if (File.Exists(zippedPatchFile)) { FileUtil.DeleteFileOrDirectory(zippedPatchFile);  }
         allZipCmds.AppendFormat("sleep 1 && cd {0} && {1} -9 -r \"{2}\" \"{3}\"\n", patchTopPath, ZIP_PATH, zippedPatchFile, "*");
         allZipCmds.AppendFormat("explorer.exe {0} \n\n", (PROJECT_DIR + "/Assets/AndroidIl2cppPatchDemo/PrebuiltPatches/").Replace("//", "/").Replace("/", "\\"));
