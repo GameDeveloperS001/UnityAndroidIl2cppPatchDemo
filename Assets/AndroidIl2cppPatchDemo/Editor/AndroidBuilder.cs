@@ -12,7 +12,7 @@ public class AndroidBuilder : MonoBehaviour {
     //-----------------------------------------------------------------------------------
     public static readonly string PROJECT_DIR = Application.dataPath.Substring(0, Application.dataPath.Length - 6);
 
-    public static readonly string ANDROID_EXPORT_PATH = PROJECT_DIR + "/AndroidGradleProject_v1.1";
+    public static readonly string ANDROID_EXPORT_PATH = PROJECT_DIR + "/AndroidGradleProject_v1.2";
     public static string ANDROID_PROJECT_PATH { get { return ANDROID_EXPORT_PATH; } }
     public static string ANDROID_MANIFEST_PATH = ANDROID_PROJECT_PATH + "/unityLibrary/src/main/";
     public static string JAVA_SRC_PATH = ANDROID_PROJECT_PATH + "/unityLibrary/src/main/java/";
@@ -122,8 +122,8 @@ public class AndroidBuilder : MonoBehaviour {
         BuildOptions options = BuildOptions.AcceptExternalModificationsToPlayer;       
         if (Directory.Exists(ANDROID_EXPORT_PATH)) { FileUtil.DeleteFileOrDirectory(ANDROID_EXPORT_PATH);}
         Directory.CreateDirectory(ANDROID_EXPORT_PATH);
-        PlayerSettings.Android.bundleVersionCode = 1;
-        PlayerSettings.bundleVersion = "1.1";
+        PlayerSettings.Android.bundleVersionCode = 2;
+        PlayerSettings.bundleVersion = "1.2";
         try
         {
             error_msg = BuildPipeline.BuildPlayer(levels, ANDROID_EXPORT_PATH, EditorUserBuildSettings.activeBuildTarget, options).summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded ? string.Empty : "Failed to export project!";
